@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #4a90e2;
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+nav {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #357ab8;
+}
+
+main {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.product-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea,
+.product-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.product-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.product-form input[type="file"] {
+    margin-top: 0.5rem;
+}
+
+.product-form button {
+    margin-top: 1.5rem;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.product-form button:hover {
+    background: #357ab8;
+}
+
+.products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: #f1f1f1;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.product-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.product-card .info {
+    flex: 1;
+}
+
+.product-card .info h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.product-card .info p {
+    margin: 0.2rem 0;
+    color: #333;
+}

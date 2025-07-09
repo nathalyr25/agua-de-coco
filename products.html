@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Productos</h1>
+        <nav>
+            <a href="index.html">Inicio</a> |
+            <a href="create-product.html">Vender Producto</a>
+        </nav>
+    </header>
+    <main>
+        <section class="products-list">
+            <!-- Aquí se mostrarán los productos -->
+            <p>No hay productos para mostrar.</p>
+        </section>
+    </main>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module">
+    import { db } from './firebase-config.js';
+    import { collection, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+    const productsList = document.querySelector('.products-list');
+    const q = query(collection(db, 'productos'), orderBy('fecha', 'desc'));
+    onSnapshot(q, (snapshot) => {
+        productsList.innerHTML = '';
+        if (snapshot.empty) {
+            productsList.innerHTML = '<p>No hay productos para mostrar.</p>';
+            return;
+        }
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            // No hay imagen, solo datos
+            card.innerHTML = `
+                <div class="info">
+                    <h2>${data.nombre}</h2>
+                    <p><strong>Precio regular:</strong> $${data.precioRegular.toFixed(2)}</p>
+                    <p><strong>Precio de venta:</strong> $${data.precio.toFixed(2)}</p>
+                    <p><strong>Descripción:</strong> ${data.descripcion}</p>
+                    <p><strong>Estado:</strong> ${data.estado}</p>
+                </div>
+            `;
+            productsList.appendChild(card);
+        });
+    });
+    </script>
+</body>
+</html>
